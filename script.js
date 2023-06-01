@@ -1,7 +1,7 @@
 const display = document.querySelector('.display')
 const buttons = Array.from(document.querySelectorAll('.buttons button'))
-const specialChars = new Set(['%', '*', '/', '-', '+', '='])
-let output = ''
+const specialChars = new Set(['%', '*', '÷', '−', '+', '='])
+let output = '0'
 
 function calculate(btnValue) {
   switch (btnValue) {
@@ -35,7 +35,11 @@ function calculate(btnValue) {
         output += btnValue
       }
   }
-  display.value = output
+  display.value = formatForDisplay(output)
+}
+
+function formatForDisplay(str) {
+  return str.replace(/\//g, '÷').replace(/\*/g, '×').replace(/-/g, '−')
 }
 
 buttons.forEach((button) =>
