@@ -1,5 +1,5 @@
 const display = document.querySelector('.display')
-const buttons = Array.from(document.querySelectorAll('.button'))
+const buttons = Array.from(document.querySelectorAll('.buttons button'))
 const specialChars = new Set(['%', '*', '/', '-', '+', '='])
 let output = ''
 

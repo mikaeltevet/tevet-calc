@@ -52,7 +52,7 @@ body {
 }
 
 .buttons button:active {
-  transform: scale(0.99);
+  transform: scale(0.95);
 }
 
 .operator {
