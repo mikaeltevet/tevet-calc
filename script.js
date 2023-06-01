@@ -25,6 +25,6 @@ function calculate(btnValue) {
 
 buttons.forEach((button) =>
   button.addEventListener('click', (event) =>
-    calculate(event.target.dataset.value)
+    calculate(event.currentTarget.dataset.value)
   )
 )
