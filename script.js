@@ -5,6 +5,15 @@ let output = ''
 
 function calculate(btnValue) {
   switch (btnValue) {
+    case '÷':
+      output += '/'
+      break
+    case '×':
+      output += '*'
+      break
+    case '−':
+      output += '-'
+      break
     case '=':
       if (output) {
         output = eval(output.replace('%', '/100')).toString()
