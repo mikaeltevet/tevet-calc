@@ -1,45 +1,48 @@
 const display = document.querySelector('.display')
 const buttons = Array.from(document.querySelectorAll('.buttons button'))
-const operators = new Set(['÷', '×', '−', '+'])
+const operators = new Set(['/', '*', '-', '+', '%'])
 let output = '0'
+let lastInputIsOperator = false
 
 function calculate(btnValue) {
-  const lastChar = output[output.length - 1]
-
-  if (operators.has(btnValue)) {
-    if (operators.has(lastChar)) {
-      // Remove the previous operator
-      output = output.slice(0, -1)
+  if (isOperator(btnValue)) {
+    if (lastInputIsOperator) {
+      output = output.slice(0, -1) + btnValue
+    } else {
+      output += btnValue
     }
-    output += btnValue
+    lastInputIsOperator = true
   } else {
     switch (btnValue) {
       case '=':
-        if (output && !operators.has(lastChar)) {
+        if (output && !lastInputIsOperator) {
           output = eval(
             output
               .replace('%', '/100')
-              .replace('÷', '/')
-              .replace('×', '*')
-              .replace('−', '-')
+              .replace(/÷/g, '/')
+              .replace(/×/g, '*')
+              .replace(/−/g, '-')
           ).toString()
         }
+        lastInputIsOperator = false
         break
       case 'AC':
         output = '0'
+        lastInputIsOperator = false
         break
       case 'DEL':
         output = output.slice(0, -1)
         if (output === '') output = '0'
+        lastInputIsOperator = isOperator(output.slice(-1))
         break
       default:
-        if (output === '0' && !operators.has(btnValue)) {
+        if (output === '0') {
           output = btnValue
-        } else if (!output && operators.has(btnValue)) {
-          return
         } else {
           output += btnValue
         }
+        lastInputIsOperator = false
+        break
     }
   }
   display.value = formatForDisplay(output)
@@ -49,8 +52,12 @@ function formatForDisplay(str) {
   return str.replace(/\//g, '÷').replace(/\*/g, '×').replace(/-/g, '−')
 }
 
+function isOperator(value) {
+  return operators.has(value)
+}
+
 buttons.forEach((button) =>
   button.addEventListener('click', (event) =>
-    calculate(event.currentTarget.dataset.value)
+    calculate(event.target.textContent)
   )
 )

@@ -12,7 +12,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #e0e3eb;
+  background: #2C3E50;
 }
 
 .container {
@@ -21,8 +21,8 @@ body {
   width: 100%;
   border-radius: 12px;
   padding: 10px 20px 20px;
-  background: #fff;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+  background: #ECF0F1;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
 }
 
 .display {
@@ -33,11 +33,12 @@ body {
   text-align: right;
   margin-bottom: 10px;
   font-size: 25px;
-  color: #000e1a;
+  color: #000E1A;
+  background: #ECF0F1;
 }
 
 .display::placeholder {
-  color: #000e1a;
+  color: #000E1A;
 }
 
 .buttons {
@@ -50,15 +51,17 @@ body {
   padding: 10px;
   border-radius: 6px;
   border: none;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.10);
   font-size: 20px;
   cursor: pointer;
-  background-color: #eee;
+  background-color: #ECF0F1;
 }
 
 .buttons button:active {
   transform: scale(0.95);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
 }
 
 .operator {
-  color: #2f9fff;
+  color: #3498DB;
 }
