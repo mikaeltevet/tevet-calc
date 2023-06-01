@@ -36,6 +36,10 @@ body {
   color: #000e1a;
 }
 
+.display::placeholder {
+  color: #000e1a;
+}
+
 .buttons {
   display: grid;
   grid-gap: 10px;
