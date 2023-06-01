@@ -7,8 +7,11 @@ function calculate(btnValue) {
   const lastChar = output[output.length - 1]
 
   if (operators.has(btnValue)) {
-    if (operators.has(lastChar)) return
-    else output += btnValue
+    if (operators.has(lastChar)) {
+      // Remove the previous operator
+      output = output.slice(0, -1)
+    }
+    output += btnValue
   } else {
     switch (btnValue) {
       case '=':
