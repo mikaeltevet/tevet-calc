@@ -7,7 +7,7 @@ function calculate(btnValue) {
   switch (btnValue) {
     case '=':
       if (output) {
-        output = eval(output.replace('%', '/100'))
+        output = eval(output.replace('%', '/100')).toString()
       }
       break
     case 'AC':
@@ -15,10 +15,16 @@ function calculate(btnValue) {
       break
     case 'DEL':
       output = output.slice(0, -1)
+      if (output === '') output = '0'
       break
     default:
-      if (!output && specialChars.has(btnValue)) return
-      output += btnValue
+      if (output === '0' && !specialChars.has(btnValue)) {
+        output = btnValue
+      } else if (!output && specialChars.has(btnValue)) {
+        return
+      } else {
+        output += btnValue
+      }
   }
   display.value = output
 }
