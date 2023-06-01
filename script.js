@@ -11,7 +11,7 @@ function calculate(btnValue) {
       }
       break
     case 'AC':
-      output = ''
+      output = '0'
       break
     case 'DEL':
       output = output.slice(0, -1)
